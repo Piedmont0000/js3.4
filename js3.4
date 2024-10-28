@@ -1,0 +1,46 @@
+// project03-04.js
+//Dennis
+// Date:2024-10-19
+
+function starImages(rating) {
+   let imageText = "";
+   for (let i = 1; i <= rating; i++) [
+       imageText+= "<ing src=' STAR.PNG' alt=''>";
+  }
+  return imageText;
+}
+
+// Assuming you have the following arrays
+const reviewTitles = ["Title1", "Title2" , "Title3" , "Title4"];
+const reviewers = ["Reviewer1", "Reviewer2", "Reviewer3", "Reviewer4"];
+const reviewDates = ["Date1", "Date2", "Date3", "Date4];
+const reviews = ["Review1", "Review2", "Review3", "Review4"];
+const reviewType = ["P", "N", "P", "N"];
+
+function generateReviews() {
+    const articles = document.getElementsByTagName('article');
+
+    for (let i = 0; i< reviewTitles.length; i++) [
+        let reviewCode = '';
+        if (reviewType[i] === 'P') [
+            reviewCode += "<table class='prime'>";
+        ] else if (reviewType[i] === 'N') [
+             reviewCode += "<table class='new'>";
+        ] else [
+             reviewCode += "<table>";
+        ]
+
+        reviewCode += "<tr><td>Title: " +reviewTitles[i] + "</td></tr>";
+        reviewCode += "<tr><td>Reviewer:" + reviewers[i] + "</td></tr>";
+        reviewCode += "<tr><td>Date: " + reviewDates[i] + "</td></tr>";
+        reviewCode += "<tr><td>Rating: " + starImages(i + 1) + "</td></tr>";
+        reviewCode += "<tr><td>Review: " + reviews[i] + "</td></tr>";
+
+        reviewCode += "</table>";
+
+        articles[0].insertAdjacentHTML('beforeend', reviewCode);
+    ]
+]
+
+// call the function to generate reviews
+generateReviews();
